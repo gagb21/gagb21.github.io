@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>❤️GAGB❤️</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            text-align: center;
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .message-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 90%;
+        }
+        .full-content {
+            display: none;
+        }
+        .pre-opening {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .message {
+            font-size: 28px;
+            font-weight: bold;
+            color: #d63384;
+            animation: fadeIn 2s ease-in-out;
+            margin-bottom: 10px;
+        }
+        .info {
+            font-size: 18px;
+            color: #333;
+            animation: fadeIn 4s ease-in-out;
+            max-width: 600px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container {
+            text-align: center;
+        }
+        .access-button {
+            background-color: #d63384;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 10px;
+        }
+        .access-button:hover {
+            background-color: #b0276b;
+        }
+        .image-container img {
+            width: 80%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 10px;
+        }
+        .extra-image-container img {
+            width: 70%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 15px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <audio id="background-music" src="xxx.mp3" loop></audio>
+    <div class="button-container">
+        <button class="access-button" onclick="checkPassword()">Acceder</button>
+    </div>
+    <div class="message-container" id="content">
+        <div class="pre-opening">
+            <p class="message">23/03/2025</p>
+            <p class="message">Giovanna Andrea Gómez Bernal</p>
+            <p class="info">En este espacio se te está preparando algo especial</p>
+            <p class="message">🌙</p>
+            <button class="access-button" onclick="checkSecondPassword()">Ver más</button>
+        </div>
+        <div class="full-content">
+            <p class="message">23/03/2025</p>
+            <div class="image-container">
+                <img src="imagen.jpg" alt="Imagen especial">
+            </div>
+            <p class="message2">No sé cuánto tiempo más va a pasar y yo voy a seguir aquí, agradeciéndole a la vida por ti, por todo lo que eres y serás...</p>
+            <p class="message2">Y como te gusta tanto la luna...</p>
+            <div class="extra-image-container">
+                <img src="imagen2.webp" alt="Imagen especial adicional">
+            </div>
+            <p class="message3">Este es un pensamiento que espero que siempre toque tu alma.</p>
+            <p class="message3">❤️¡Eres la justa medida de todo!❤️</p>
+            <p class="message">🌙</p>
+            <button class="access-button" onclick="goBack()">Volver atrás</button>
+        </div>
+    </div>
+    <script>
+        function checkPassword() {
+            let password = prompt("Ingrese la contraseña:");
+            if (password === "GAGB") {
+                document.getElementById("content").style.display = "flex";
+                document.querySelector(".button-container").style.display = "none";
+                document.getElementById("background-music").play();
+            } else {
+                alert("Contraseña incorrecta. Inténtalo de nuevo.");
+            }
+        }
+        function checkSecondPassword() {
+            let password = prompt("Ingrese la segunda contraseña:");
+            if (password === "BGAG") {
+                document.querySelector(".pre-opening").style.display = "none";
+                document.querySelector(".full-content").style.display = "block";
+            } else {
+                alert("Contraseña incorrecta. Inténtalo de nuevo.");
+            }
+        }
+        function goBack() {
+            document.querySelector(".full-content").style.display = "none";
+            document.querySelector(".pre-opening").style.display = "flex";
+        }
+    </script>
+</body>
+</html>
+
