@@ -8,49 +8,76 @@
         body {
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            align-items: flex-start; /* Cambiado a flex-start para permitir desplazamiento */
+            min-height: 100vh;
             background: linear-gradient(135deg, #ff9a9e, #fad0c4);
             text-align: center;
             font-family: 'Georgia', serif;
             margin: 0;
             padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto; /* Permitir desplazamiento vertical */
         }
         .message-container {
-            background: white;
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             display: none;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            max-width: 90%;
+            width: 90%;
+            max-width: 600px;
+            margin: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeInContainer 1.5s ease-in-out;
         }
         .full-content {
             display: none;
+            width: 100%;
         }
         .pre-opening {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100%;
+            width: 100%;
         }
         .message {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
             color: #d63384;
             animation: fadeIn 2s ease-in-out;
             margin-bottom: 10px;
+            font-family: 'Dancing Script', cursive;
+        }
+        .message2 {
+            font-size: 16px;
+            color: #555;
+            animation: fadeIn 6s ease-in-out;
+            line-height: 1.6;
+            width: 100%;
+            padding-top: 20px;
+            text-align: justify;
+            font-family: 'Playfair Display', serif;
+        }
+        .message3 {
+            font-weight: bold;
+            color: #d63384;
+            margin-top: 15px;
+            animation: fadeIn 7s ease-in-out;
+            font-family: 'Dancing Script', cursive;
         }
         .info {
-            font-size: 18px;
-            color: #333;
+            font-size: 16px;
+            color: #555;
             animation: fadeIn 4s ease-in-out;
-            max-width: 600px;
+            width: 100%;
             text-align: center;
             margin-top: 20px;
+            font-family: 'Playfair Display', serif;
         }
         .button-container {
             text-align: center;
@@ -60,47 +87,159 @@
             color: white;
             border: none;
             padding: 10px 20px;
-            font-size: 18px;
-            border-radius: 10px;
+            font-size: 25px;
+            border-radius: 25px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.4);
             margin-top: 10px;
+            transition: all 0.3s ease;
+            font-family: 'Dancing Script', cursive;
         }
         .access-button:hover {
             background-color: #b0276b;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.6);
         }
         .image-container img {
-            width: 80%;
+            width: 100%;
             max-width: 400px;
             height: auto;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             margin-top: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .image-container img:hover {
+            transform: scale(1.02);
         }
         .extra-image-container img {
-            width: 70%;
+            width: 100%;
             max-width: 350px;
             height: auto;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             margin-top: 15px;
+            transition: transform 0.3s ease;
+        }
+        .extra-image-container img:hover {
+            transform: scale(1.02);
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes fadeInContainer {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        /* Efecto de corazones flotantes */
+        .hearts {
+            position: fixed; /* Cambiado a fixed para que no afecte el desplazamiento */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1; /* Enviar al fondo */
+        }
+        .hearts span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 99, 132, 0.6);
+            box-shadow: 0 0 10px rgba(255, 99, 132, 0.6);
+            border-radius: 50%;
+            animation: animateHearts 5s linear infinite;
+        }
+        .hearts span:nth-child(1) {
+            left: 20%;
+            animation-delay: 0s;
+        }
+        .hearts span:nth-child(2) {
+            left: 40%;
+            animation-delay: 2s;
+        }
+        .hearts span:nth-child(3) {
+            left: 60%;
+            animation-delay: 4s;
+        }
+        .hearts span:nth-child(4) {
+            left: 80%;
+            animation-delay: 6s;
+        }
+        @keyframes animateHearts {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        /* Media Queries para responsividad */
+        @media (max-width: 768px) {
+            .message {
+                font-size: 20px;
+            }
+            .message2 {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            .info {
+                font-size: 14px;
+            }
+            .access-button {
+                font-size: 25px;
+                padding: 8px 16px;
+            }
+            .image-container img, .extra-image-container img {
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 480px) {
+            .message {
+                font-size: 18px;
+            }
+            .message2 {
+                font-size: 12px;
+                line-height: 1.4;
+            }
+            .info {
+                font-size: 12px;
+            }
+            .access-button {
+                font-size: 25px;
+                padding: 6px 12px;
+            }
+        }
     </style>
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <audio id="background-music" src="xxx.mp3" loop></audio>
+    <!-- Efecto de corazones flotantes -->
+    <div class="hearts">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <div class="button-container">
-        <button class="access-button" onclick="checkPassword()">Acceder</button>
+        <button class="access-button" onclick="checkPassword()">¡Buenas...!</button>
     </div>
     <div class="message-container" id="content">
         <div class="pre-opening">
             <p class="message">23/03/2025</p>
             <p class="message">Giovanna Andrea Gómez Bernal</p>
-            <p class="info">En este espacio se te está preparando algo especial</p>
+            <p class="info">Este espacio fue preparado con mucho cariño y guarda algo verdaderamente especial, único y destinado solo para ti.</p>
             <p class="message">🌙</p>
             <button class="access-button" onclick="checkSecondPassword()">Ver más</button>
         </div>
@@ -109,13 +248,30 @@
             <div class="image-container">
                 <img src="imagen.jpg" alt="Imagen especial">
             </div>
-            <p class="message2">No sé cuánto tiempo más va a pasar y yo voy a seguir aquí, agradeciéndole a la vida por ti, por todo lo que eres y serás...</p>
-            <p class="message2">Y como te gusta tanto la luna...</p>
+            <p class="message2">
+                A partir de hoy, trataré de seguir adelante, ahora que ya no me encontraré con tu mirada. Seguramente, se vendrá una gran cantidad de días que dejaré de reír por no tenerte en este espacio de manera tangible. Todo fue muy diferente. Los abrazos, las sonrisas y las palabras únicas.... Nuevamente te lo digo, has sido de las mejores “cosas” improvisadas que han llegado en mi vida, y, haya sido real o no, te lo agradezco, porque en todo este lapso (de tiempo) fui muy feliz.
+                <br><br>
+                Perdona todo lo malo, soy humano y también me equivoco.
+                <br><br>
+                No me voy a alargar. Pero la verdad, solo espero que lleguen pronto más días felices (y no lo malinterpretes)…
+                <br><br>
+                De mi parte, deseo que la vida ponga en tu camino todo lo que realmente te haga feliz, que tus pasos te guíen a donde quieras llegar. Que cuando tropieces, tus alas se abran y alces nuevamente el vuelo. Que tus brazos sirvan para consolar a quienes quieres de verdad y sean un refugio de consuelo donde puedan descansar y sentirse a salvo. Que tus lágrimas se transformen en sonrisas y te des cuenta de que lo malo no dura siempre y que la vida, a pesar de todo es bella. Así, siempre tendrás razones para seguir adelante y no rendirte jamás. Hasta la luna pasa por fases para volver a estar llena...
+                <br><br>
+                Hoy quiero decir "Gracias". Gracias por haber aparecido cuando lo hiciste. Gracias por verme en realidad como soy. Gracias por darme tu atención y apoyo. Gracias por tu tiempo y tus palabras. ¡Gracias! ... porque aunque no fue mucho tiempo, para mí fue un para siempre.
+                <br><br>
+                De lo malo que tal vez pudiste “aportar”, no fue malo realmente. Sin rencores, porque un día fuiste mi persona favorita... 
+                <br><br>
+                ¡Todos rompimos nuestras propias reglas por alguien y no todas las historias necesitan un cierre perfecto; algunas solo deben ser vividas!
+                <br><br>
+                Felicidades por llegar hasta aquí, felicidades por este gran logro, felicidades porque lo que se viene va a ser realmente bueno… ¡Sabes más que nadie que te lo mereces!
+                <br><br>
+                Y como tanto te gusta la "Luna", recuerda...
+            </p>
             <div class="extra-image-container">
-                <img src="imagen2.webp" alt="Imagen especial adicional">
+                <img src="./Imagen2.gif" alt="Imagen especial adicional">
             </div>
-            <p class="message3">Este es un pensamiento que espero que siempre toque tu alma.</p>
-            <p class="message3">❤️¡Eres la justa medida de todo!❤️</p>
+            <p class="message3">Este es un pensamiento que espero toque suavemente tu corazón y guarde con cariño todo lo bueno que pude sembrar en él.</p>
+            <p class="message3">¡Eres la justa medida de todo!</p>
             <p class="message">🌙</p>
             <button class="access-button" onclick="goBack()">Volver atrás</button>
         </div>
@@ -147,4 +303,3 @@
     </script>
 </body>
 </html>
-
