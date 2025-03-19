@@ -288,9 +288,12 @@
         </div>
     </div>
     <script>
+        let secondPassword = "GAGBGAGB"; // Contraseña inicial del full-content
+        let passwordChanged = false; // Controla si el mensaje ya se mostró
+
         // Contador de tiempo
         function updateCountdown() {
-            const targetDate = new Date('2025-03-21T16:00:00-05:00'); // Hora de Colombia (UTC-5)
+            const targetDate = new Date('2025-03-18T16:00:00-05:00'); // Hora de Colombia (UTC-5)
             const now = new Date();
             const timeDifference = targetDate - now;
 
@@ -301,10 +304,12 @@
                 const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
                 document.getElementById('countdown').innerHTML = `
-                    Faltan: ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos.
+                    Debes esperar: ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos ó
+                    descifra el segundo acceso...
                 `;
             } else {
                 document.getElementById('countdown').innerHTML = "¡Ha llegado el momento!";
+                secondPassword = "GAGB"; // Cambiar la contraseña a la misma del pre-opening
             }
         }
 
@@ -318,13 +323,19 @@
                 document.getElementById("content").style.display = "flex";
                 document.querySelector(".button-container").style.display = "none";
                 document.getElementById("background-music").play();
+
+                // Mostrar el mensaje de cambio de contraseña solo una vez
+                if (!passwordChanged && secondPassword === "GAGB") {
+                    alert("Sí no pudiste adivinar la segunda contraseña, no importa. A partir de este momento, es la misma que siempre has usado para llegar hasta aquí.");
+                    passwordChanged = true; // Marcar como mostrado
+                }
             } else {
                 alert("Contraseña incorrecta. Inténtalo de nuevo.");
             }
         }
         function checkSecondPassword() {
-            let password = prompt("Ingrese la segunda contraseña:");
-            if (password === "GAGBGAGB") {
+            let password = prompt("Contraseña 2:");
+            if (password === secondPassword) {
                 document.querySelector(".pre-opening").style.display = "none";
                 document.querySelector(".full-content").style.display = "block";
             } else {
