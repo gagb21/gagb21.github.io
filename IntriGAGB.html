@@ -45,6 +45,15 @@
             justify-content: center;
             width: 100%;
         }
+        .message-dia{
+            font-size: 20px;
+            font-style: oblique;
+            font-weight: bold;
+            color: #d63384;
+            animation: fadeIn 2s ease-in-out;
+            margin-bottom: 10px;
+            font-family: 'Dancing Script', cursive;
+        }
         .message {
             font-size: 24px;
             font-weight: bold;
@@ -242,14 +251,14 @@
         <span></span>
     </div>
     <div class="button-container">
-        <button class="access-button" onclick="checkPassword()">¡Buenas...!</button>
+        <button class="access-button" onclick="checkPassword()">¡Te estaba esperando!</button>
     </div>
     <div class="message-container" id="content">
         <div class="pre-opening">
             <p class="message">21/03/2025</p>
             <p class="message">Giovanna Andrea Gómez Bernal</p>
             <p class="info">Este espacio fue preparado con mucho cariño y guarda algo verdaderamente especial, único y destinado solo para ti.</p>
-            <p class="message">🌙🌙🌙</p>
+            <p class="message">🌙</p>
             <!-- Contador de días, horas, minutos y segundos -->
             <div class="countdown" id="countdown"></div>
             <button class="access-button" onclick="checkSecondPassword()">Ver más</button>
@@ -284,6 +293,10 @@
             <p class="message3">Este es un pensamiento que espero toque suavemente tu corazón y guarde con cariño todo lo bueno que pude sembrar en él.</p>
             <p class="message3">¡Eres la justa medida de todo!</p>
             <p class="message">🌙</p>
+            <div class="image-container">
+                <p class="message-dia">--- 22/03/2025 ---</p>
+                <img src="./22MAR25.png" alt="Imagen especial">
+            </div>
             <button class="access-button" onclick="goBack()">Volver atrás</button>
         </div>
     </div>
