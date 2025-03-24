@@ -251,7 +251,7 @@
         <span></span>
     </div>
     <div class="button-container">
-        <button class="access-button" onclick="checkPassword()">¡Te estaba esperando!</button>
+        <button class="access-button" onclick="checkPassword()">¡Bienvenida!</button>
     </div>
     <div class="message-container" id="content">
         <div class="pre-opening">
@@ -261,7 +261,7 @@
             <p class="message">🌙</p>
             <!-- Contador de días, horas, minutos y segundos -->
             <div class="countdown" id="countdown"></div>
-            <button class="access-button" onclick="checkSecondPassword()">Ver más</button>
+            <button class="access-button" onclick="showFullContent()">Ver más</button>
         </div>
         <div class="full-content">
             <p class="message">21/03/2025</p>
@@ -319,9 +319,6 @@
         </div>
     </div>
     <script>
-        let secondPassword = "GAGBGAGB"; // Contraseña inicial del full-content
-        let passwordChanged = false; // Controla si el mensaje ya se mostró
-
         // Contador de tiempo
         function updateCountdown() {
             const targetDate = new Date('2025-03-21T16:00:00-05:00'); // Hora de Colombia (UTC-5)
@@ -335,12 +332,10 @@
                 const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
                 document.getElementById('countdown').innerHTML = `
-                    Debes esperar: ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos ó
-                    descifra el segundo acceso...
+                    Debes esperar: ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos
                 `;
             } else {
                 document.getElementById('countdown').innerHTML = "¡Ha llegado el momento!";
-                secondPassword = "GAGB"; // Cambiar la contraseña a la misma del pre-opening
             }
         }
 
@@ -354,25 +349,16 @@
                 document.getElementById("content").style.display = "flex";
                 document.querySelector(".button-container").style.display = "none";
                 document.getElementById("background-music").play();
-
-                // Mostrar el mensaje de cambio de contraseña solo una vez
-                if (!passwordChanged && secondPassword === "GAGB") {
-                    alert("Sí no pudiste adivinar la segunda contraseña, no importa. A partir de este momento, es la misma que siempre has usado para llegar hasta aquí.");
-                    passwordChanged = true; // Marcar como mostrado
-                }
             } else {
                 alert("Contraseña incorrecta. Inténtalo de nuevo.");
             }
         }
-        function checkSecondPassword() {
-            let password = prompt("Contraseña 2:");
-            if (password === secondPassword) {
-                document.querySelector(".pre-opening").style.display = "none";
-                document.querySelector(".full-content").style.display = "block";
-            } else {
-                alert("Contraseña incorrecta. Inténtalo de nuevo.");
-            }
+        
+        function showFullContent() {
+            document.querySelector(".pre-opening").style.display = "none";
+            document.querySelector(".full-content").style.display = "block";
         }
+        
         function goBack() {
             document.querySelector(".full-content").style.display = "none";
             document.querySelector(".pre-opening").style.display = "flex";
