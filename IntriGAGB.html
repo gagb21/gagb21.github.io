@@ -4,246 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <title>❤️GAGB❤️</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            text-align: center;
-            font-family: 'Georgia', serif;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        .message-container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 90%;
-            max-width: 600px;
-            margin: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            animation: fadeInContainer 1.5s ease-in-out;
-        }
-        .full-content {
-            display: none;
-            width: 100%;
-        }
-        .pre-opening {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-        .message-dia{
-            font-size: 20px;
-            font-style: oblique;
-            font-weight: bold;
-            color: #d63384;
-            animation: fadeIn 2s ease-in-out;
-            margin-bottom: 10px;
-            font-family: 'Dancing Script', cursive;
-        }
-        .message {
-            font-size: 24px;
-            font-weight: bold;
-            color: #d63384;
-            animation: fadeIn 2s ease-in-out;
-            margin-bottom: 10px;
-            font-family: 'Dancing Script', cursive;
-        }
-        .message2 {
-            font-size: 16px;
-            color: #555;
-            animation: fadeIn 6s ease-in-out;
-            line-height: 1.6;
-            width: 100%;
-            padding-top: 20px;
-            text-align: justify;
-            font-family: 'Playfair Display', serif;
-        }
-        .message3 {
-            font-weight: bold;
-            color: #d63384;
-            margin-top: 15px;
-            animation: fadeIn 7s ease-in-out;
-            font-family: 'Dancing Script', cursive;
-        }
-        .info {
-            font-size: 16px;
-            color: #555;
-            animation: fadeIn 4s ease-in-out;
-            width: 100%;
-            text-align: center;
-            margin-top: 20px;
-            font-family: 'Playfair Display', serif;
-        }
-        .button-container {
-            text-align: center;
-        }
-        .access-button {
-            background-color: #d63384;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.4);
-            margin-top: 10px;
-            transition: all 0.3s ease;
-            font-family: 'Dancing Script', cursive;
-        }
-        .access-button:hover {
-            background-color: #b0276b;
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.6);
-        }
-        .image-container img {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            margin-top: 10px;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-        .image-container img:hover {
-            transform: scale(1.02);
-        }
-        .extra-image-container img {
-            width: 100%;
-            max-width: 350px;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            margin-top: 15px;
-            transition: transform 0.3s ease;
-        }
-        .extra-image-container img:hover {
-            transform: scale(1.02);
-        }
-        .countdown {
-            font-size: 20px;
-            font-weight: bold;
-            color: #d63384;
-            margin-top: 20px;
-            font-family: 'Dancing Script', cursive;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInContainer {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: -1;
-        }
-        .hearts span {
-            position: absolute;
-            display: block;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 99, 132, 0.6);
-            box-shadow: 0 0 10px rgba(255, 99, 132, 0.6);
-            border-radius: 50%;
-            animation: animateHearts 5s linear infinite;
-        }
-        .hearts span:nth-child(1) {
-            left: 20%;
-            animation-delay: 0s;
-        }
-        .hearts span:nth-child(2) {
-            left: 40%;
-            animation-delay: 2s;
-        }
-        .hearts span:nth-child(3) {
-            left: 60%;
-            animation-delay: 4s;
-        }
-        .hearts span:nth-child(4) {
-            left: 80%;
-            animation-delay: 6s;
-        }
-        @keyframes animateHearts {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-        @media (max-width: 768px) {
-            .message {
-                font-size: 20px;
-            }
-            .message2 {
-                font-size: 14px;
-                line-height: 1.5;
-            }
-            .info {
-                font-size: 14px;
-            }
-            .access-button {
-                font-size: 25px;
-                padding: 8px 16px;
-            }
-            .image-container img, .extra-image-container img {
-                max-width: 100%;
-            }
-            .countdown {
-                font-size: 18px;
-            }
-        }
-        @media (max-width: 480px) {
-            .message {
-                font-size: 18px;
-            }
-            .message2 {
-                font-size: 12px;
-                line-height: 1.4;
-            }
-            .info {
-                font-size: 12px;
-            }
-            .access-button {
-                font-size: 25px;
-                padding: 6px 12px;
-            }
-            .countdown {
-                font-size: 16px;
-            }
-        }
-    </style>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css_styles.css">
 </head>
 <body>
-    <audio id="background-music" src="XXX2.mp3" loop></audio>
+    <audio id="background-music" src="./XXX3.mp3" loop></audio>
     <div class="hearts">
         <span></span>
         <span></span>
@@ -255,21 +20,21 @@
     </div>
     <div class="message-container" id="content">
         <div class="pre-opening">
-            <p class="message">21/03/2025</p>
+            <p class="message">...</p>
             <p class="message">Giovanna Andrea Gómez Bernal</p>
             <p class="info">Este espacio fue preparado con mucho cariño y guarda algo verdaderamente especial, único y destinado solo para ti.</p>
-            <p class="message">🌙</p>
+            <p class="message"></p>
             <!-- Contador de días, horas, minutos y segundos -->
             <div class="countdown" id="countdown"></div>
             <button class="access-button" onclick="showFullContent()">Ver más</button>
         </div>
         <div class="full-content">
-            <p class="message">21/03/2025</p>
+            <p class="message">---- Ese bendito día ----</p>
             <div class="image-container">
                 <img src="imagen.jpg" alt="Imagen especial">
             </div>
             <p class="message2">
-                A partir de hoy, trataré de seguir adelante, ahora que ya no me encontraré con tu mirada. Seguramente, se vendrá una gran cantidad de días que dejaré de reír por no tenerte en este espacio de manera tangible. Todo fue muy diferente. Los abrazos, las sonrisas y las palabras únicas.... Nuevamente te lo digo, has sido de las mejores “cosas” improvisadas que han llegado en mi vida, y, haya sido real o no, te lo agradezco, porque en todo este lapso (de tiempo) fui muy feliz.
+                A partir de hoy, trataré de seguir adelante, ahora que ya no me encontraré con tu mirada. Seguramente, se vendrá una gran cantidad de días que dejaré de reír por no tenerte en este espacio de manera tangible. Todo fue muy diferente. Los abrazos, las sonrisas y las palabras únicas.... Nuevamente te lo digo, has sido de las mejores "cosas" improvisadas que han llegado en mi vida, y, haya sido real o no, te lo agradezco, porque en todo este lapso (de tiempo) fui muy feliz.
                 <br><br>
                 Perdona todo lo malo, soy humano y también me equivoco.
                 <br><br>
@@ -279,7 +44,7 @@
                 <br><br>
                 Hoy quiero decirte "Gracias"... Gracias por haber aparecido cuando lo hiciste. Gracias por verme y disfrutar en realidad de como soy. Gracias por darme tu atención y todo tu apoyo. Gracias por tu tiempo. ¡Gracias por absolutamente todo! ... porque aunque no fue mucho el tiempo, para mí, fue un para siempre.
                 <br><br>
-                De lo malo que tal vez pienses que en algún momento pudiste “aportar”, no fue malo realmente. Sin rencores, porque un día fuiste mi persona favorita... 
+                De lo malo que tal vez pienses que en algún momento pudiste "aportar", no fue malo realmente. Sin rencores, porque un día fuiste mi persona favorita... 
                 <br><br>
                 ¡Todos rompimos nuestras propias reglas por alguien y no todas las historias necesitan un cierre perfecto; algunas solo deben ser vividas!
                 <br><br>
@@ -292,155 +57,25 @@
             </div>
             <p class="message3">Este es un pensamiento que espero toque suavemente tu corazón y guarde con cariño todo lo bueno que pude sembrar en él.</p>
             <p class="message3">¡Eres la justa medida de todo!</p>
+
             <div class="image-container">
-                <p class="message-dia">----- 22/03/2025 -----</p>
-                <img src="./22MAR25.png" alt="Imagen especial">
-            </div>
-            <div class="image-container">
-                <p class="message-dia">----- 23/03/2025 -----</p>
+                <p class="message">---- Ese recuerdo ----</p>
                 <p class="message2">
-                <b>10:44 de la noche...</b>
-                <br><br>
-                Fisicamente no estamos juntos, pero si pudieras tomar mi corazón y observarlo, verías que estás aquí conmigo… 
-                </p>    
-            </div>
-            <div class="image-container">
-                <p class="message-dia">----- 24/03/2025 -----</p>
-                <p class="message2">
-                <b>11:12 de la mañana...</b>
-                <br><br>
-                <b>Guardaré como un tesoro el recuerdo de la primera vez que hablé contigo...</b>
-                ese instante donde sin saberlo,
-                mi corazón reconoció a alguien hermoso que había llegado para quedarse por mucho tiempo...
-                <br><br> 
-                <b>3:04 de la tarde...</b>
-                <br><br> 
-                Trato de avanzar cargando el silencio de tus respuestas que nunca llegaron...
-                </p>
-            </div>
-            <div class="image-container">
-                <p class="message-dia">----- 25/03/2025 -----</p>
-                <p class="message2">
-                <b>07:07 de la noche...</b>
-                <br><br>
-                <b>Primer día sin ti en ese rinconcito donde te conocí...</b>
-                Ese lugar donde siempre te buscaba y ahí estabas, donde en mis días oscuros brillabas con tu luz. Hoy no pude verte, no me encontré con tu mirada, no sentí tu energía ni escuché tu risa… No estuviste en ese pedazo de cielo, y te extrañé… Sí, te extrañé, tanto que mi día se sintió incompleto, como si le faltara un rayito de sol. <b>Ahora entiendo por qué hoy el día se tornó gris…</b>
-                <br><br>
-                <b>08:35 de la noche...</b>
-                <br><br>
-                <b>Y ella respondió...</b>
-                <br><br>
-                <i>
-                "Ay yo también te extrañé tantoooo. Te dije que el cielito estaba triste porque sabía que no íbamos a vernos como lo hemos hecho los últimos meses y se sintió horribleeee y peor pensar que es el primero de los próximos días.😖
-                <br><br>
-                Peeero, aún y con lo difícil que sea adaptarnos a esta nueva forma de hacer parte de la vida del otro, haberte visto al final del día me alegro la vida, hoy enserio viví en función de que este momento llegara. Porque eres lo que me llena los días, eres mi risita diaria. Me haces falta otra vez, pero gracias por venir y querer darme un ratico de tu tiempo para llenarme de alegría y dejarme una sensación bonita con tu visita."
-                </i>
-                </p>
-            </div>
-            <div class="image-container">
-                <p class="message-dia">----- 26/03/2025 -----</p>
-                <p class="message2">
-                <b>05:15 de la tarde...</b>
-                <br><br>
-                <b>Mi mejor descanso de la semana...</b> Fue uno de esos sueños profundos en los que todo se desvanece: el mundo se detiene, los problemas se disuelven y, por un instante, dejas de ser, dejas de estar, y solo quedas en un vacío sereno donde nada pesa ni existe... Post: Me despertó el dolor en el brazo. 🙄
-                </p>    
-            </div>
-            <div class="image-container">
-                <p class="message-dia">----- 27/03/2025 -----</p>
-                <p class="message2">
-                    <b>09:31 de la noche...</b>
-                    <br><br>
-                    <b>Porfa no me la dediques... </b> 🥺
-                    <br><br>
-                    <b>
-                        <a href="https://www.youtube.com/watch?v=-vOgEO13FYA" 
-                           target="_blank" 
-                           onclick="window.open(this.href, '_blank', 'width=800,height=450'); return false;">
-                           Morat, Camilo - Me Toca A Mí (Video Oficial) 
-                        </a>
-                    </b>
-                    <br><br>
-                </p>
-            </div>
-            <div class="image-container">
-                <p class="message-dia">----- 28/03/2025 -----</p>
-                <p class="message2">
-                <b>10:55 de la noche...</b>
-                <br><br>
-                <i>"Estábamos junticos y ya eso lo hacía ser de los dos..."</i>❤️
-                </p>    
-            </div> 
-            <div class="image-container">
-                <p class="message-dia">----- 29/03/2025 -----</p>
-                <p class="message2">
-                    <b>10:55 de la noche...</b>🥺🥺🥺
-                    <br><br>
                 <img src="./29MAR25.png" alt="Imagen">
                 </p>
             </div> 
+            
             <div class="image-container">
-                <p class="message-dia">----- 05/05/2025 -----</p>
+                <p class="message">----- Ese detalle -----</p>
                 <p class="message2">
-                    <b>09:54 de la noche...</b>
-                    <br><br>
-                    ¿El grado para cuándo? 🙄🙄🙄
-                </p>
-                </p>
-            </div>
-            <div class="image-container">
-                <p class="message-dia">----- 06/05/2025 -----</p>
-                <p class="message2">
-                    <b>06:44 de la tarde...</b>
-                    <br><br>
-                    <i>"Cederé si el plan divino es quedarte conmigo..."</i>
-                </p>
-                </p>
-            </div>
-            <div class="image-container">
-                <p class="message-dia">----- 01/06/2025 -----</p>
-                <p class="message2">
-                    <b>10:43 de la mañana...</b>
-                    <br><br>
-                    <i>"...me aferro a que no fue un final sino un alto en el cuento.."</i> 🥺🥺🥺
-                </p>
-                </p>
-            </div>
-            <div class="image-container">
-                <p class="message-dia">----- 02/06/2025 -----</p>
-                <p class="message2">
-                    <b>02:35 de la tarde...</b>
-                    <br><br>
-                    <b>
-                        <a href="https://www.youtube.com/watch?v=gsC07rl7DP8" 
-                           target="_blank" 
-                           onclick="window.open(this.href, '_blank', 'width=800,height=450'); return false;">
-                           Morat - Desastre Natural
-                        </a>
-                    </b>
-                    <br><br>
-                    <i>"...cuando yo apenas te estaba conociendo,</i>
-                    <br><br>
-                    <i>Y ya sabiendo lo que te iba a querer..."</i> 
-                    <br><br>
-                </p>
-            </div>
-            <div class="image-container">
-                <p class="message-dia">----- 05/06/2025 -----</p>
-                <p class="message2">
-                    <b>02:26 de la tarde...</b>
-                    <br><br>
                 <img src="./05JUN25.png" alt="Imagen">
-                <br><br>
-                <i>🎶""...hoy me has hecho falta para bien y para mal...""🎶 </i>
                 </p>
             </div> 
+
             <div class="image-container">
-                <p class="message-dia">----- 19/06/2025 -----</p>
+                <p class="message">----- 24 -----</p>
                 <p class="message2">
-                    <b>08:35 de la mañana...</b>
-                    <br><br>
-                    🙏🏽🙏🏽🙏🏽 ¡Perdoncito por la hora...! 🙏🏽🙏🏽🙏🏽
-                    <br><br>
+        
                     <img src="./19JUN25.png" alt="Imagen">
                     <br><br>
                     <b>Algunas cosas para recordar a tus 24 años:</b>
@@ -457,7 +92,7 @@
                     <br><br>
                     &nbsp;&nbsp;&nbsp;&nbsp; • Siempre hay y habrá tiempo, solo espera y ten paciencia...
                     <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp; • Tu niña interior sigue ahí, jugando y soñando, no la reprimas...
+                    &nbsp;&nbsp;&nbsp;&nbsp; • Tu niña interior sigue ahí, jugando y soñando, no la reprimas...
                     <br><br>
                     &nbsp;&nbsp;&nbsp;&nbsp; • ... Y aunque a veces parece que no queda nada, la esperanza siempre está ahí, esperando.
                     <br><br>
@@ -466,11 +101,11 @@
                     ¡Feliz cumpleaños Gómez Bernal!
                     </p>
             </div>
+
             <div class="image-container">
-                <p class="message-dia">----- 23/07/2025 -----</p>
+                <p class="message">----- Tu logro -----</p>
                 <p class="message2">
-                    <b>09:40 de la mañana...</b>
-                    <br><br>
+
                 <img src="./23JUL25.jpg" alt="Imagen">
                 <br><br>
                 <b>"Lo que significa crecer..."</b>
@@ -493,61 +128,38 @@
                     <br><br>
                     ¡Felicidades por tus grados, Gómez Bernal!
                     </p>
-                <i></i>
+            </div>
+
+
+
+            <div class="image-container">
+                <p class="message">----- No hay septiembre -----</p>
+                <p class="message2">
+      
+                Creo que este año he derramado más lágrimas que nunca. He llorado sintiendo que, con cada una, se escapaba un pedazo de mi vida. He intentado vaciar todo lo que llevaba guardado, pero siempre quedaba algo dentro… Un eco que insistía en quedarse.
+                <br><br>
+                He llorado con fuerza, en silencio, en soledad y también acompañado. He llorado con un dolor profundo, preguntándome una y otra vez: “¿Por qué?”, deseando regresar a esos días donde la felicidad se sentía real. He sentido rabia, impotencia, tristeza, vacío, soledad.
+                <br><br>
+                Me he abrazado fuerte a mí mismo, buscando consuelo en mis propios brazos. Me he quedado dormido con las lágrimas resbalando por mi rostro… Esas que saben a corazón roto. Y aunque he llorado tanto, cada lágrima me ha dejado un poco más fuerte, un poco más yo.
+                <br><br>
+                Ya no quiero tener esos bajones que aprietan demasiado el corazón. A veces, tienes que tomar una decisión que te romperá por dentro, pero que le dará paz a tu alma.
+                <br><br>
+                Pude haberte llamado. Pero no. Mi silencio también es una forma de respeto al amor que tuvimos… Y a la decisión que tomaste al caminar con alguien más. Dale el valor que se merece, parece ser una buena persona...
+                <br><br>
+                Deseo que encuentres todo aquello que sueñas y anhelas y nunca olvides lo mucho que has luchado para llegar hasta aquí.
+                <br><br>
+                Gracias por estar, por los momentos compartidos y por el espacio que ocupaste en mi historia. Aunque el camino cambie, mi agradecimiento y cariño siempre permanecerá y "lo sabes perfectamente".
                 </p>
             </div>
-            <p class="message">🌙</p>
+
+
+
+            <p class="message">... No volvieron...</p>
             <button class="access-button" onclick="goBack()">Volver atrás</button>
         </div>
     </div>
-    <script>
-        // Contador de tiempo
-        function updateCountdown() {
-            const targetDate = new Date('2025-03-21T16:00:00-05:00'); // Hora de Colombia (UTC-5)
-            const now = new Date();
-            const timeDifference = targetDate - now;
-
-            if (timeDifference > 0) {
-                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-                document.getElementById('countdown').innerHTML = `
-                    Debes esperar: ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos
-                `;
-            } else {
-                document.getElementById('countdown').innerHTML = "¡Ha llegado el momento!";
-            }
-        }
-
-        // Actualizar el contador cada segundo
-        setInterval(updateCountdown, 1000);
-        updateCountdown(); // Llamar inmediatamente para evitar retraso inicial
-
-        function checkPassword() {
-            let password = prompt("Ingrese la contraseña:");
-            if (password === "GAGB") {
-                document.getElementById("content").style.display = "flex";
-                document.querySelector(".button-container").style.display = "none";
-                document.getElementById("background-music").play();
-            } else {
-                alert("Contraseña incorrecta. Inténtalo de nuevo.");
-            }
-        }
-        
-        function showFullContent() {
-            document.querySelector(".pre-opening").style.display = "none";
-            document.querySelector(".full-content").style.display = "block";
-        }
-        
-        function goBack() {
-            document.querySelector(".full-content").style.display = "none";
-            document.querySelector(".pre-opening").style.display = "flex";
-        }
-    </script>
+    <script src="./javascript_logic.js"></script>
 </body>
 </html>
-
 
 
