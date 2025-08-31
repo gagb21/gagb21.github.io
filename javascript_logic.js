@@ -1,5 +1,5 @@
 // Fecha objetivo: 1 de septiembre de 2025 a las 12:00 PM hora de Colombia (UTC-5)
-const TARGET_DATE = new Date('2025-09-01T18:21:00-05:00');
+const TARGET_DATE = new Date('2025-09-01T21:30:00-05:00');
 
 // Contador de tiempo
 function updateCountdown() {
@@ -30,7 +30,7 @@ function isDateReached() {
 function checkPassword() {
     // Primero verificar si la fecha ha llegado
     if (!isDateReached()) {
-        alert("Debes esperar hasta el 01 de septiembre de 2025 a las 21:00.");
+        alert("Debes esperar hasta el 01 de septiembre de 2025 a las 21:30.");
         return;
     }
     
