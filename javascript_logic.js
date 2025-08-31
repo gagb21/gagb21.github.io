@@ -30,7 +30,7 @@ function isDateReached() {
 function checkPassword() {
     // Primero verificar si la fecha ha llegado
     if (!isDateReached()) {
-        alert("Debes esperar hasta el 30 de agosto de 2025 a las 23:30.");
+        alert("Debes esperar hasta el 31 de agosto de 2025 a las 00:00.");
         return;
     }
     
