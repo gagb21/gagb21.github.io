@@ -16,7 +16,7 @@ function updateCountdown() {
             Debes esperar: ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos
         `;
     } else {
-        document.getElementById('countdown').innerHTML = "¡Ha llegado el momento!";
+        document.getElementById('countdown').innerHTML = "Bienvenida...";
     }
 }
 
