@@ -1,5 +1,5 @@
 // Fecha objetivo: 1 de septiembre de 2025 a las 12:00 PM hora de Colombia (UTC-5)
-const TARGET_DATE = new Date('2025-09-01T21:30:00-05:00');
+const TARGET_DATE = new Date('2025-08-29T23:30:00-05:00');
 
 // Contador de tiempo
 function updateCountdown() {
@@ -30,12 +30,12 @@ function isDateReached() {
 function checkPassword() {
     // Primero verificar si la fecha ha llegado
     if (!isDateReached()) {
-        alert("Debes esperar hasta el 01 de septiembre de 2025 a las 21:30.");
+        alert("Debes esperar hasta el 30 de agosto de 2025 a las 23:30.");
         return;
     }
     
     // Si la fecha ha llegado, pedir contraseña
-    let password = prompt("Ha llegado el momento. Ingrese la contraseña:");
+    let password = prompt("Ingrese la contraseña:");
     if (password === "GAGB") {
         document.getElementById("content").style.display = "flex";
         document.querySelector(".button-container").style.display = "none";
@@ -67,7 +67,7 @@ function updateButton() {
     const button = document.querySelector(".access-button");
     if (button && button.textContent === "¡Bienvenida!") {
         if (isDateReached()) {
-            button.textContent = "¡El momento ha llegado!";
+            button.textContent = "Ingresar";
             button.style.background = "linear-gradient(145deg, #059669, #047857)";
             button.style.boxShadow = "0 8px 20px rgba(5, 150, 105, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)";
         } else {
